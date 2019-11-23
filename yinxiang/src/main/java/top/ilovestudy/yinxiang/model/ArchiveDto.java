@@ -1,12 +1,17 @@
 package top.ilovestudy.yinxiang.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@Data
-@AllArgsConstructor
-public class ArchiveDto {
-  private String date;
-  private int number;
+@Data(staticConstructor = "of")
+public class ArchiveDto implements Comparable {
+  private final int count;
+  private final String date;
   private String url;
+
+  @Override
+  public int compareTo(Object that) {
+    ArchiveDto archiveDto = (ArchiveDto) that;
+    String date = archiveDto.getDate();
+    return this.date.compareTo(date);
+  }
 }

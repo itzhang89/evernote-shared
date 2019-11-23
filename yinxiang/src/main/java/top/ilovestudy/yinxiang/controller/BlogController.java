@@ -1,9 +1,5 @@
 package top.ilovestudy.yinxiang.controller;
 
-import com.evernote.edam.error.EDAMNotFoundException;
-import com.evernote.edam.error.EDAMSystemException;
-import com.evernote.edam.error.EDAMUserException;
-import com.evernote.thrift.TException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,16 +25,16 @@ public class BlogController {
   }
 
   @RequestMapping("/index")
-  public String index(ModelMap modelMap) throws EDAMUserException, TException, EDAMSystemException, EDAMNotFoundException {
-    List<ArticleDto> articleDtos = articleService.findSharedArticleDtoList();
+  public String index(ModelMap modelMap) {
+    List<ArticleDto> articleDtoList = articleService.findSharedArticleDtoList();
     List<CategoryDto> categories = articleService.findCategoryDtoList();
-    List<ArticleDto> popularArticleDtos = articleService.getPopularArticles();
-    List<LabelDto> cloudLabelDtos = articleService.findCloudLabelList();
-    List<ArchiveDto> archives = articleService.getArchives();
-    modelMap.addAttribute("articles", articleDtos);
+    List<ArticleDto> popularArticleDtoList = articleService.getPopularArticles();
+    List<LabelDto> cloudLabelDtoList = articleService.findCloudLabelList();
+    List<ArchiveDto> archives = articleService.findArchives();
+    modelMap.addAttribute("articles", articleDtoList);
     modelMap.addAttribute("categories", categories);
-    modelMap.addAttribute("popularArticles", popularArticleDtos);
-    modelMap.addAttribute("cloudTags", cloudLabelDtos);
+    modelMap.addAttribute("popularArticles", popularArticleDtoList);
+    modelMap.addAttribute("cloudTags", cloudLabelDtoList);
     modelMap.addAttribute("archives", archives);
     return "index";
   }

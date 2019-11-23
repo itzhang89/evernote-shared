@@ -43,7 +43,8 @@
                                        th:style="'background-image: url('+${item.avatar}+');'"></a>
                                     <div class="text text-2 pl-md-4">
                                         <h3 class="mb-2">
-                                            <a th:href="${item.url}" th:text="${item.title}">Article Title</a>
+                                            <a th:href="@{single/{id}(id=${item.id})}" th:text="${item.title}">Article
+                                                Title</a>
                                         </h3>
                                         <div class="meta-wrap">
                                             <p class="meta">
@@ -148,8 +149,9 @@
                         <div class="sidebar-box ftco-animate">
                             <h3 class="sidebar-heading">Archives</h3>
                             <ul class="categories">
-                                <li th:each="item:${archives}"><a th:href="${item.url}" th:text="${item.date}"><span
-                                        th:text="'('+${item.number}+')'"></span></a></li>
+                                <li th:each="item:${archives}">
+                                    <a th:href="${item.url}" th:inline="text">[[${item.date}]]<span th:text="'('+${item.count}+')'"></span></a>
+                                </li>
                             </ul>
                         </div>
 

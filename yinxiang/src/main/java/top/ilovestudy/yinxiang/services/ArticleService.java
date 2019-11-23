@@ -17,7 +17,9 @@ import top.ilovestudy.yinxiang.repository.LabelRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class ArticleService {
@@ -33,15 +35,12 @@ public class ArticleService {
     this.labelRepository = labelRepository;
   }
 
-  public List<ArchiveDto> getArchives() {
-    List<ArchiveDto> lists = new ArrayList<>();
-    lists.add(new ArchiveDto("Decob14 2018", 20, "#"));
-    lists.add(new ArchiveDto("September 2018", 12, "#"));
-    lists.add(new ArchiveDto("July 2018", 14, "#"));
-    lists.add(new ArchiveDto("June 2018", 16, "#"));
-    lists.add(new ArchiveDto("May 2018 ", 80, "#"));
-
-    return lists;
+  public List<ArchiveDto> findArchives() {
+    List<Map> allArchiveGroupByMonthAndYearInLastYear = articleRepository.findALLArchiveGroupByMonthAndYearInLastYear();
+    List<Map> allArchiveGroupByYearInAYearAgo = articleRepository.findALLArchiveGroupByYearInAYearAgo();
+    return Stream.concat(allArchiveGroupByMonthAndYearInLastYear.stream(), allArchiveGroupByYearInAYearAgo.stream())
+        .map(obj -> ArchiveDto.of(Integer.valueOf(obj.get("count").toString()), obj.get("groupDate").toString()))
+        .sorted().collect(Collectors.toList());
   }
 
   public LabelDto findCloudLabelById(String id) {
