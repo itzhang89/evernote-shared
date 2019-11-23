@@ -1,0 +1,21 @@
+[
+  {
+    "guid": "840b5190-7493-4dfb-afa1-9ce6507ed953",
+    "title": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON",
+    "content": null,
+    "contentHash": "f8I7s/gXhxDf8FIPkUx0pg==",
+    "contentLength": 6465,
+    "created": 1563966058000,
+    "updated": 1563967842000,
+    "deleted": 0,
+    "active": true,
+    "updateSequenceNum": 1492,
+    "notebookGuid": "a3ac04ee-db6a-436e-8494-ba2cedbb39ab",
+    "tagGuids": [
+      "efe890d8-05d0-4773-9c01-caa35f6f5834"
+    ],
+    "resources": null,
+    "attributes": null,
+    "tagNames": null
+  }
+]

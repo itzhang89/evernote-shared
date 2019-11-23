@@ -1,0 +1,34 @@
+yinxiang:
+  devToken: "S=s49:U=143a4df:E=16e96dfce76:C=16e72d34a00:P=1cd:A=en-devtoken:V=2:H=687a8eb46ecdee89fdf6fb1a29469e32"
+  noteStoreUrl: "https://app.yinxiang.com/shard/s49/notestore"
+  filterNoteBooks:
+    - "NoteBook1"
+    - "NoteBook2"
+  filterNotes:
+    - "Note1"
+    - "Note2"
+
+spring:
+  thymeleaf:
+    cache: false
+
+  devtools:
+    restart:
+      additional-paths:
+        - "yinxiang/src/main/java"
+        - "**/resources/templates"
+  datasource:
+    url: jdbc:postgresql://localhost:5432/yinxiang?useUnicode=true&characterEncoding=utf-8
+    username: postgres
+    password: mysecretpassword
+    driverClassName: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        create: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl:
+          auto: update
+        temp:
+          use_jdbc_metadata_defaults: false

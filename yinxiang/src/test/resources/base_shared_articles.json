@@ -1,0 +1,26 @@
+[
+  {
+    "id": "840b5190-7493-7493-7493-9ce6507e4773",
+    "title": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON",
+    "content": "<div></div>",
+    "author": "爱穿格子裤",
+    "briefIntro": "JSON Schema 是一种可以对Json格式进行验证。本文主要是对JSON Schema中的一些",
+    "created": "2019-07-24T19:00:58Z",
+    "updated": "2019-07-24T19:30:42Z",
+    "deleted": "1970-01-01T08:00:00Z",
+    "sourceUrl": null,
+    "updateSequenceNum": 1492,
+    "tagGuidList": [
+      {
+        "id": "efe890d8-4773-4773-4773-caa35f6f4773",
+        "name": null
+      }
+    ],
+    "category": {
+      "id": "a3ac04ee-db6a-436e-8494-ba2cedbb4773",
+      "name": null
+    },
+    "original": false,
+    "shared": true
+  }
+]
