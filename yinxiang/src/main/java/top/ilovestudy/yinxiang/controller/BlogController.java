@@ -31,9 +31,9 @@ public class BlogController {
   @RequestMapping("/index")
   public String index(ModelMap modelMap) throws EDAMUserException, TException, EDAMSystemException, EDAMNotFoundException {
     List<ArticleDto> articleDtos = articleService.findSharedArticleDtoList();
-    List<CategoryDto> categories = articleService.getCategoriesFromNotebooks();
+    List<CategoryDto> categories = articleService.findCategoryDtoList();
     List<ArticleDto> popularArticleDtos = articleService.getPopularArticles();
-    List<LabelDto> cloudLabelDtos = articleService.getCloudTags();
+    List<LabelDto> cloudLabelDtos = articleService.findCloudLabelList();
     List<ArchiveDto> archives = articleService.getArchives();
     modelMap.addAttribute("articles", articleDtos);
     modelMap.addAttribute("categories", categories);
