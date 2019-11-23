@@ -36,8 +36,8 @@ public class ArticleService {
   }
 
   public List<ArchiveDto> findArchives() {
-    List<Map> allArchiveGroupByMonthAndYearInLastYear = articleRepository.findALLArchiveGroupByMonthAndYearInLastYear();
-    List<Map> allArchiveGroupByYearInAYearAgo = articleRepository.findALLArchiveGroupByYearInAYearAgo();
+    List<Map> allArchiveGroupByMonthAndYearInLastYear = articleRepository.findAllArchiveGroupByMonthAndYearInLastYear();
+    List<Map> allArchiveGroupByYearInAYearAgo = articleRepository.findAllArchiveGroupByYearInAYearAgo();
     return Stream.concat(allArchiveGroupByMonthAndYearInLastYear.stream(), allArchiveGroupByYearInAYearAgo.stream())
         .map(obj -> ArchiveDto.of(Integer.valueOf(obj.get("count").toString()), obj.get("groupDate").toString()))
         .sorted().collect(Collectors.toList());
@@ -73,8 +73,10 @@ public class ArticleService {
   }
 
   public List<CategoryDto> findCategoryDtoList() {
-    List<Category> categories = categoryRepository.findAll();
-    return categories.stream().map(CategoryMapper.INSTANCE::categoryToCategoryDto).collect(Collectors.toList());
+    List<Map> allCategoriesGroup = articleRepository.findAllCategoriesGroup();
+    return allCategoriesGroup.stream().map(obj ->
+        new CategoryDto(obj.get("id").toString(), obj.get("name").toString(), Integer.valueOf(obj.get("count").toString()))
+    ).sorted().collect(Collectors.toList());
   }
 
   public ArticleDto findArticleDtoById(String id) {

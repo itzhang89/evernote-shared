@@ -98,8 +98,7 @@
                             <h3 class="sidebar-heading">Categories</h3>
                             <ul class="categories">
                                 <li th:each="item:${categories}">
-                                    <a th:href="${item.url}" th:text="${item.name}">Fashion
-                                        <span th:text="'('+${item.number}+')'"></span></a>
+                                    <a th:href="${item.url}" th:inline="text">[[${item.name}]]<span th:text="'('+${item.count}+')'"></span></a>
                                 </li>
                             </ul>
                         </div>

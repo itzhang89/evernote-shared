@@ -13,7 +13,7 @@ public interface CategoryMapper {
   CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
 
   @Mapping(source = "guid", target = "url")
-  @Mapping(expression = "java(notebook.getSharedNotebooksSize())", target = "number")
+  @Mapping(expression = "java(notebook.getSharedNotebooksSize())", target = "count")
   CategoryDto noteBookToCategoryDto(Notebook notebook);
 
   @Mapping(source = "id", target = "url")
