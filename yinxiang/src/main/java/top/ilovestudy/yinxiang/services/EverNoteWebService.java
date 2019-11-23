@@ -34,17 +34,8 @@ public class EverNoteWebService {
     this.everNoteProperties = everNoteProperties;
   }
 
-  List<Notebook> getNoteBooks() throws TException, EDAMUserException, EDAMSystemException {
-    return noteStore.listNotebooks();
-  }
-
   Notebook getNoteBookById(String guid) throws TException, EDAMUserException, EDAMSystemException, EDAMNotFoundException {
     return noteStore.getNotebook(guid);
-  }
-
-
-  List<Tag> getTags() throws TException, EDAMUserException, EDAMSystemException {
-    return noteStore.listTags();
   }
 
   Tag getTagById(String guid) throws TException, EDAMUserException, EDAMSystemException, EDAMNotFoundException {

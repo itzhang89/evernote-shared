@@ -7,7 +7,8 @@ yinxiang:
   filterNotes:
     - "Note1"
     - "Note2"
-
+  sync:
+    schedule: 0 0 8,12,16,20 * * ?
 spring:
   thymeleaf:
     cache: false

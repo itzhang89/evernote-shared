@@ -7,7 +7,8 @@ yinxiang:
   filterNotes:
     - "Note1"
     - "Note2"
-
+  sync:
+    schedule: 0 0 8,12,16,20 * * ?
 spring:
   thymeleaf:
     cache: false
@@ -29,6 +30,6 @@ spring:
         format_sql: true
         create: org.hibernate.dialect.PostgreSQLDialect
         hbm2ddl:
-          auto: update
+          auto: create
         temp:
           use_jdbc_metadata_defaults: false

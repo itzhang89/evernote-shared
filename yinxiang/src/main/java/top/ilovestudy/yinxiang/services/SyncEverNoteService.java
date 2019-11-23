@@ -7,9 +7,9 @@ import com.evernote.edam.type.Notebook;
 import com.evernote.edam.type.Tag;
 import com.evernote.thrift.TException;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import top.ilovestudy.yinxiang.config.EverNoteProperties;
 import top.ilovestudy.yinxiang.model.entites.Article;
 import top.ilovestudy.yinxiang.model.entites.Category;
 import top.ilovestudy.yinxiang.model.entites.Label;
@@ -40,13 +40,20 @@ public class SyncEverNoteService {
     this.categoryRepository = categoryRepository;
   }
 
-  public void syncAllArticlesAndDetailsAndSaveInDatabase() throws EDAMUserException, TException, EDAMSystemException, EDAMNotFoundException {
+  @Scheduled(cron = "${yinxiang.sync.schedule}")
+  public void syncAllTasks() throws EDAMUserException, TException, EDAMSystemException, EDAMNotFoundException {
+    syncAllArticlesAndDetailsAndSaveInDatabase();
+    syncAllLabelsFromEverNoteAndSaveInDatabase();
+    syncAllCategoriesFromEverNoteAndSaveInDatabase();
+  }
+
+  void syncAllArticlesAndDetailsAndSaveInDatabase() throws EDAMUserException, TException, EDAMSystemException, EDAMNotFoundException {
     List<Article> articles = everNoteWebService.getAllNotes().stream().map(ArticleMapper.INSTANCE::noteToArticle).collect(Collectors.toList());
     List<Article> articlesDetails = articles.stream().filter(article -> findPublishNoteAndSetContentAndBriefIntro(article)).collect(Collectors.toList());
     articleRepository.saveAll(articlesDetails);
   }
 
-  public void syncAllLabelsFromEverNoteAndSaveInDatabase() throws EDAMUserException, TException, EDAMSystemException, EDAMNotFoundException {
+  void syncAllLabelsFromEverNoteAndSaveInDatabase() throws EDAMUserException, TException, EDAMSystemException, EDAMNotFoundException {
     List<Label> labels = labelRepository.findAll();
     for (Label label : labels) {
       Tag tag = everNoteWebService.getTagById(label.getId());
@@ -55,7 +62,7 @@ public class SyncEverNoteService {
     labelRepository.saveAll(labels);
   }
 
-  public void syncAllCategoriesFromEverNoteAndSaveInDatabase() throws EDAMUserException, TException, EDAMSystemException, EDAMNotFoundException {
+  void syncAllCategoriesFromEverNoteAndSaveInDatabase() throws EDAMUserException, TException, EDAMSystemException, EDAMNotFoundException {
     List<Category> categories = categoryRepository.findAll();
     for (Category category : categories) {
       Notebook notebook = everNoteWebService.getNoteBookById(category.getId());
