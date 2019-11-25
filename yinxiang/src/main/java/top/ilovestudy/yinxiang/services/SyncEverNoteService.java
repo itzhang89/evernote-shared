@@ -56,7 +56,7 @@ public class SyncEverNoteService {
   void syncAllLabelsFromEverNoteAndSaveInDatabase() throws EDAMUserException, TException, EDAMSystemException, EDAMNotFoundException {
     List<Label> labels = labelRepository.findAll();
     for (Label label : labels) {
-      Tag tag = everNoteWebService.getTagById(label.getId());
+      Tag tag = everNoteWebService.getTagById(label.getTagGuid());
       label.setName(tag.getName());
     }
     labelRepository.saveAll(labels);

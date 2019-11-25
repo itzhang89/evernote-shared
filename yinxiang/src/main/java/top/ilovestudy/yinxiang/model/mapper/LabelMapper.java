@@ -14,16 +14,16 @@ public interface LabelMapper {
 
   LabelMapper INSTANCE = Mappers.getMapper(LabelMapper.class);
 
-  @Mapping(source = "id", target = "url")
+  @Mapping(source = "tagGuid", target = "id")
   LabelDto labelToLabelDto(Label label);
 
-  @Mapping(source = "guid", target = "id")
+  @Mapping(source = "guid", target = "tagGuid")
   Label convertGuidAndNameToLabel(String guid, String name);
 
-  @Mapping(source = "guid", target = "id")
+  @Mapping(source = "guid", target = "tagGuid")
   Label convertTagGuidToLabel(String guid);
 
-  @Mapping(source = "guid", target = "id")
+  @Mapping(source = "guid", target = "tagGuid")
   Label tagToLabel(Tag tag);
 
   List<Label> convertTagGuidsToLabelList(List<String> tagGuids);
