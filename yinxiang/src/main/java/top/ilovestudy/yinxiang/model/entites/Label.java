@@ -17,10 +17,10 @@ public class Label {
   @Id
   @GeneratedValue
   @Column(updatable = false, nullable = false)
-  private String id;
+  private Long id;
   private String tagGuid;
   private String name;
 
-  @Column(name = "article_id", nullable = false)
-  private String articleId;
+//  @Column(name = "article_id", nullable = false)
+//  private String articleId;
 }

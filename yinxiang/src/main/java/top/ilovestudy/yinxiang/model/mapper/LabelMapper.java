@@ -15,6 +15,7 @@ public interface LabelMapper {
   LabelMapper INSTANCE = Mappers.getMapper(LabelMapper.class);
 
   @Mapping(source = "tagGuid", target = "id")
+  @Mapping(source = "tagGuid", target = "url")
   LabelDto labelToLabelDto(Label label);
 
   @Mapping(source = "guid", target = "tagGuid")

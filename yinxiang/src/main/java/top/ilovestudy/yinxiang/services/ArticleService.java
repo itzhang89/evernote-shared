@@ -53,6 +53,11 @@ public class ArticleService {
     return labels.stream().map(LabelMapper.INSTANCE::labelToLabelDto).collect(Collectors.toList());
   }
 
+  public List<LabelDto> findCloudLabelListByArticleId(String articleId) {
+    List<Label> labels = labelRepository.findAllByArticleId(articleId);
+    return labels.stream().map(LabelMapper.INSTANCE::labelToLabelDto).collect(Collectors.toList());
+  }
+
   public List<ArticleDto> getPopularArticles() {
     List<ArticleDto> lists = new ArrayList<>();
     ArticleDto articleDto1 = getDefaultArticle("A Loving Heart is the Truest Wisdom");

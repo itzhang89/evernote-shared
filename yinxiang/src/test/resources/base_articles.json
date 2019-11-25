@@ -13,13 +13,13 @@
       "isOriginal": false,
       "sourceUrl": null,
       "updateSequenceNum": 2196,
-      "tagGuidList": [
+      "labelGuidList": [
         {
-          "id": "efe890d8-15d0-4773-9c01-caa35f6f5834",
+          "tagGuid": "efe890d8-15d0-4773-9c01-caa35f6f5834",
           "name": null
         },
         {
-          "id": "0226131b-4d83-4fb1-8b0c-cd75eeee6d8c",
+          "tagGuid": "0226131b-4d83-4fb1-8b0c-cd75eeee6d8c",
           "name": null
         }
       ],
@@ -41,7 +41,7 @@
       "isOriginal": false,
       "sourceUrl": null,
       "updateSequenceNum": 1678,
-      "tagGuidList": null,
+      "labelGuidList": null,
       "category": {
         "id": "a3ac04ee-ba7f-436e-8494-ba2cedbb39ab",
         "name": null
@@ -60,9 +60,9 @@
       "isOriginal": false,
       "sourceUrl": null,
       "updateSequenceNum": 1492,
-      "tagGuidList": [
+      "labelGuidList": [
         {
-          "id": "efe890d8-ba7f-4773-ba7f-caa35f6f5834",
+          "tagGuid": "efe890d8-ba7f-4773-ba7f-caa35f6f5834",
           "name": null
         }
       ],

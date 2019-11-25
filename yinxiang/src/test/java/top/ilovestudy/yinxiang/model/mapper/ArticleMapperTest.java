@@ -61,11 +61,8 @@ public class ArticleMapperTest {
     assertEquals(note.getNotebookGuid(), article.getCategory().getId());
     assertEquals(note.getAttributes().getSourceURL(), article.getSourceUrl());
     assertEquals(note.getAttributes().getAuthor(), article.getAuthor());
-    assertEquals(note.getTagGuids().get(0), article.getLabelGuidList().get(0).getId());
-    assertEquals(note.getTagGuids().get(1), article.getLabelGuidList().get(1).getId());
-    // TODO: don't have the right to parse the tagName for Article
-//    assertEquals(note.getTagNames().get(0), article.getTagGuidList().get(0).getName());
-//    assertEquals(note.getTagNames().get(1), article.getTagGuidList().get(1).getName());
+    assertEquals(note.getTagGuids().get(0), article.getLabelGuidList().get(0).getTagGuid());
+    assertEquals(note.getTagGuids().get(1), article.getLabelGuidList().get(1).getTagGuid());
   }
 
   private Note getTestNote() {

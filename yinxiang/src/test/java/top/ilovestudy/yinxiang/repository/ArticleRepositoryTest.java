@@ -1,10 +1,8 @@
 package top.ilovestudy.yinxiang.repository;
 
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import top.ilovestudy.yinxiang.IsolationTest;
 import top.ilovestudy.yinxiang.model.entites.Article;
 
 import java.util.List;
@@ -14,9 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static top.ilovestudy.yinxiang.utils.JsonUtils.readJsonFileToObject;
 import static top.ilovestudy.yinxiang.utils.JsonUtils.readObjectListFromJsonFile;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ArticleRepositoryTest {
+class ArticleRepositoryTest extends IsolationTest {
 
   @Autowired
   ArticleRepository articleRepository;
@@ -42,7 +38,6 @@ class ArticleRepositoryTest {
 
   @Test
   void shouldSaveOneArticleInDatabase() {
-    articleRepository.deleteAll();
     Article article = readObjectListFromJsonFile("base_shared_articles.json").get(0);
     if (articleRepository.findById(article.getId()).isPresent()) {
       articleRepository.deleteById(article.getId());
@@ -58,13 +53,11 @@ class ArticleRepositoryTest {
 
   @Test
   void shouldSaveAllArticles() {
-    articleRepository.deleteAll();
     List<Article> articles = readObjectListFromJsonFile("base_shared_articles.json");
 
     articleRepository.saveAll(articles);
 
     assertNotNull(articles);
   }
-
 
 }

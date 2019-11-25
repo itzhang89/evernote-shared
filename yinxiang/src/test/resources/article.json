@@ -9,10 +9,10 @@
   "deleted": "1970-01-01T08:00:00Z",
   "sourceUrl": null,
   "updateSequenceNum": 1492,
-  "tagGuidList": [
+  "labelGuidList": [
     {
-      "id": "efe890d8-4773-4773-4773-caa35f6f4773",
-      "name": null
+      "id": "1",
+      "tagGuid": "efe890d8-4773-4773-4773-caa35f6f4773"
     }
   ],
   "category": {

@@ -27,7 +27,7 @@ import static top.ilovestudy.yinxiang.utils.DateUtils.DATE_TIME_FORMAT;
 public class Article {
 
   @Id
-  @Column(unique = true, nullable = false)
+  @Column(name = "id", unique = true, nullable = false)
   @GeneratedValue(generator = "custom-uuid")
   @GenericGenerator(name = "custom-uuid", strategy = "top.ilovestudy.yinxiang.config.CustomUUIDGenerator")
   private String id;
