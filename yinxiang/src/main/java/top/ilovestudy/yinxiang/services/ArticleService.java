@@ -50,7 +50,8 @@ public class ArticleService {
 
   public List<LabelDto> findCloudLabelList() {
     List<Label> labels = labelRepository.findAll();
-    return labels.stream().map(LabelMapper.INSTANCE::labelToLabelDto).collect(Collectors.toList());
+    List<Label> distinctLabels = labels.stream().distinct().collect(Collectors.toList());
+    return distinctLabels.stream().map(LabelMapper.INSTANCE::labelToLabelDto).collect(Collectors.toList());
   }
 
   public List<LabelDto> findCloudLabelListByArticleId(String articleId) {
