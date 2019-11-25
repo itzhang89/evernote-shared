@@ -62,7 +62,9 @@ public class BlogController {
   @RequestMapping("/single/{id}")
   public String singleTemplate(@PathVariable String id, ModelMap modelMap) {
     ArticleDto articleDtoById = articleService.findArticleDtoById(id);
+    List<LabelDto> cloudLabelListByArticleId = articleService.findCloudLabelListByArticleId(id);
     modelMap.addAttribute("article", articleDtoById);
+    modelMap.addAttribute("articleLabels", cloudLabelListByArticleId);
     return "single";
   }
 

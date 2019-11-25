@@ -42,11 +42,8 @@
 
                             <!-- 当前文章标签部分 -->
                             <div class="tag-widget post-tag-container mb-5 mt-5">
-                                <div class="tagcloud">
-                                    <a class="tag-cloud-link" href="#">Life</a>
-                                    <a class="tag-cloud-link" href="#">Sport</a>
-                                    <a class="tag-cloud-link" href="#">Tech</a>
-                                    <a class="tag-cloud-link" href="#">Travel</a>
+                                <div class="tagcloud" th:each="label : ${articleLabels}">
+                                    <a class="tag-cloud-link" th:href="${label.url}" th:text="${label.name}">Life</a>
                                 </div>
                             </div>
                             <!-- 作者图片-->
