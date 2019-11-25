@@ -1,4 +1,7 @@
 package top.ilovestudy.yinxiang.model.entites;
 
-public class Group {
+public interface Group {
+  String getName();
+
+  int getCount();
 }

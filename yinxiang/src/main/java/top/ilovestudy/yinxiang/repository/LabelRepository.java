@@ -3,9 +3,9 @@ package top.ilovestudy.yinxiang.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import top.ilovestudy.yinxiang.model.entites.Group;
 import top.ilovestudy.yinxiang.model.entites.Label;
 
-import java.security.acl.Group;
 import java.util.List;
 
 @Repository
