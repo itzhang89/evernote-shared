@@ -7,7 +7,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -47,12 +46,15 @@ public class Article {
   private String sourceUrl;
   private int updateSequenceNum;
 
-  @OneToMany(cascade = ALL, fetch = FetchType.EAGER)
+  @OneToMany(cascade = ALL)
   @JoinColumn(name = "article_id")
   private List<Label> labelGuidList;
 
-  @OneToOne(cascade = ALL, fetch = FetchType.EAGER)
+  @OneToOne(cascade = ALL)
   @JoinColumn(name = "category_id")
   private Category category;
 
+  @OneToMany(cascade = ALL)
+  @JoinColumn(name = "article_id")
+  private List<PostComment> postComments;
 }
