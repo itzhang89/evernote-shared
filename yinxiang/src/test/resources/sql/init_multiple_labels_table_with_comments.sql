@@ -16,13 +16,13 @@ VALUES (1, 'tag_guid_1', 'article1_tag_1', 'article_id_1'),
        (2, 'tag_guid_2', 'article1_tag_2', 'article_id_1'),
        (3, 'tag_guid_2', 'article1_tag_2', 'article_id_1');
 
-INSERT INTO public.post_comment (id, parent_id, answer_to, content, dis_likes, likes, username, comment_time,
+INSERT INTO public.post_comment (id, reply_id, parent_id, content, dis_likes, likes, username, comment_time,
                                  article_id)
-VALUES (1, null, 0, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
+VALUES (1, 0, null, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
             laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
             saepe enim sapiente iste iure! Quam voluptas earum impedit
             necessitatibus, nihil?', 0, 1, 'John Doe', '2019-12-03 14:21:00.000', 'article_id_1'),
-       (2, null, 0, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
+       (2, 0, null, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
             laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
             saepe enim sapiente iste iure! Quam voluptas earum impedit
             necessitatibus, nihil?', 0, 1, 'John Doe', '2019-12-03 14:21:00.000', 'article_id_1'),
@@ -46,7 +46,7 @@ VALUES (1, null, 0, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. P
             laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
             saepe enim sapiente iste iure! Quam voluptas earum impedit
             necessitatibus, nihil?', 0, 1, 'John Doe', '2019-12-03 14:21:00.000', 'article_id_1'),
-       (8, null, 0, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
+       (8, 0, null, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
             laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
             saepe enim sapiente iste iure! Quam voluptas earum impedit
             necessitatibus, nihil?', 0, 1, 'John Doe', '2019-12-03 14:21:00.000', 'article_id_1');
