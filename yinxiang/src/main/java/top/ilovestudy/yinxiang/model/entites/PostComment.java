@@ -22,8 +22,8 @@ public class PostComment {
 
   @OneToOne(cascade = ALL)
   @JoinColumn(name = "parent_id")
-  private PostComment parentId;
-  private Long replyId;
+  private PostComment parentPostComment;
+  private Long belongId;
 
   private String username;
   private ZonedDateTime commentTime;
