@@ -16,7 +16,7 @@ VALUES (1, 'tag_guid_1', 'article1_tag_1', 'article_id_1'),
        (2, 'tag_guid_2', 'article1_tag_2', 'article_id_1'),
        (3, 'tag_guid_2', 'article1_tag_2', 'article_id_1');
 
-INSERT INTO public.post_comment (id, child_id, content, dis_likes, likes, username, comment_time, article_id)
+INSERT INTO public.post_comment (id, parent_id, content, dis_likes, likes, username, comment_time, article_id)
 VALUES (1, null, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
             laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
             saepe enim sapiente iste iure! Quam voluptas earum impedit

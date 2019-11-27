@@ -6,7 +6,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import java.time.ZonedDateTime;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Data
 @Entity
@@ -16,10 +20,9 @@ public class PostComment {
   @GeneratedValue
   private Long id;
 
-  //  @OneToOne(cascade = ALL)
-//  @JoinColumn(name = "child_id")
-//  private PostComment childId;
-  private Long childId;
+  @OneToOne(cascade = ALL)
+  @JoinColumn(name = "parent_id")
+  private PostComment parentId;
 
   private String username;
   private ZonedDateTime commentTime;
