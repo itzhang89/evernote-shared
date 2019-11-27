@@ -10,13 +10,13 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+@Sql(scripts = "classpath:/sql/init_multiple_labels_table_with_comments.sql")
 class PostPostCommentRepositoryTest extends IsolationTest {
 
   @Resource
   PostCommentRepository postCommentRepository;
 
   @Test
-  @Sql(scripts = "classpath:/sql/init_multiple_labels_table_with_comments.sql")
   void shouldGetAllPostComments() {
     List<PostComment> comments = postCommentRepository.findAll();
 

@@ -23,6 +23,7 @@ public class PostComment {
   @OneToOne(cascade = ALL)
   @JoinColumn(name = "parent_id")
   private PostComment parentId;
+  private Long answerTo;
 
   private String username;
   private ZonedDateTime commentTime;

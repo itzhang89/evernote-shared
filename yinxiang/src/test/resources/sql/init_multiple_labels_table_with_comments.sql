@@ -16,36 +16,37 @@ VALUES (1, 'tag_guid_1', 'article1_tag_1', 'article_id_1'),
        (2, 'tag_guid_2', 'article1_tag_2', 'article_id_1'),
        (3, 'tag_guid_2', 'article1_tag_2', 'article_id_1');
 
-INSERT INTO public.post_comment (id, parent_id, content, dis_likes, likes, username, comment_time, article_id)
-VALUES (1, null, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
+INSERT INTO public.post_comment (id, parent_id, answer_to, content, dis_likes, likes, username, comment_time,
+                                 article_id)
+VALUES (1, null, 0, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
             laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
             saepe enim sapiente iste iure! Quam voluptas earum impedit
             necessitatibus, nihil?', 0, 1, 'John Doe', '2019-12-03 14:21:00.000', 'article_id_1'),
-       (2, null, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
+       (2, null, 0, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
             laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
             saepe enim sapiente iste iure! Quam voluptas earum impedit
             necessitatibus, nihil?', 0, 1, 'John Doe', '2019-12-03 14:21:00.000', 'article_id_1'),
-       (3, 2, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
+       (3, 2, 2, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
             laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
             saepe enim sapiente iste iure! Quam voluptas earum impedit
             necessitatibus, nihil?', 0, 1, 'John Doe', '2019-12-03 14:21:00.000', 'article_id_1'),
-       (4, 3, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
+       (4, 2, 3, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
             laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
             saepe enim sapiente iste iure! Quam voluptas earum impedit
             necessitatibus, nihil?', 0, 1, 'John Doe', '2019-12-03 14:21:00.000', 'article_id_1'),
-       (5, 4, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
+       (5, 2, 4, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
             laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
             saepe enim sapiente iste iure! Quam voluptas earum impedit
             necessitatibus, nihil?', 0, 1, 'John Doe', '2019-12-03 14:21:00.000', 'article_id_1'),
-       (6, 5, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
+       (6, 2, 5, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
             laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
             saepe enim sapiente iste iure! Quam voluptas earum impedit
             necessitatibus, nihil?', 0, 1, 'John Doe', '2019-12-03 14:21:00.000', 'article_id_1'),
-       (7, 6, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
+       (7, 2, 6, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
             laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
             saepe enim sapiente iste iure! Quam voluptas earum impedit
             necessitatibus, nihil?', 0, 1, 'John Doe', '2019-12-03 14:21:00.000', 'article_id_1'),
-       (8, null, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
+       (8, null, 0, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
             laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
             saepe enim sapiente iste iure! Quam voluptas earum impedit
             necessitatibus, nihil?', 0, 1, 'John Doe', '2019-12-03 14:21:00.000', 'article_id_1');
