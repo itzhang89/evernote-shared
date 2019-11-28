@@ -5,15 +5,19 @@ import top.ilovestudy.yinxiang.model.ArchiveDto;
 import top.ilovestudy.yinxiang.model.ArticleDto;
 import top.ilovestudy.yinxiang.model.CategoryDto;
 import top.ilovestudy.yinxiang.model.LabelDto;
+import top.ilovestudy.yinxiang.model.PostCommentDto;
 import top.ilovestudy.yinxiang.model.entites.Article;
 import top.ilovestudy.yinxiang.model.entites.Category;
 import top.ilovestudy.yinxiang.model.entites.Label;
+import top.ilovestudy.yinxiang.model.entites.PostComment;
 import top.ilovestudy.yinxiang.model.mapper.ArticleMapper;
 import top.ilovestudy.yinxiang.model.mapper.CategoryMapper;
 import top.ilovestudy.yinxiang.model.mapper.LabelMapper;
+import top.ilovestudy.yinxiang.model.mapper.PostCommentMapper;
 import top.ilovestudy.yinxiang.repository.ArticleRepository;
 import top.ilovestudy.yinxiang.repository.CategoryRepository;
 import top.ilovestudy.yinxiang.repository.LabelRepository;
+import top.ilovestudy.yinxiang.repository.PostCommentRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +31,19 @@ public class ArticleService {
   private final ArticleRepository articleRepository;
   private final CategoryRepository categoryRepository;
   private final LabelRepository labelRepository;
+  private final PostCommentRepository postCommentRepository;
 
 
-  public ArticleService(ArticleRepository articleRepository, LabelRepository labelRepository, CategoryRepository categoryRepository) {
+  public ArticleService(ArticleRepository articleRepository, LabelRepository labelRepository, CategoryRepository categoryRepository, PostCommentRepository postCommentRepository) {
     this.articleRepository = articleRepository;
     this.categoryRepository = categoryRepository;
     this.labelRepository = labelRepository;
+    this.postCommentRepository = postCommentRepository;
+  }
+
+  public List<PostCommentDto> findPostCommentByArticleId(String articleId) {
+    List<PostComment> postComments = postCommentRepository.findAllByArticleId(articleId);
+    return PostCommentMapper.INSTANCE.postCommentListToPostCommentDtoList(postComments);
   }
 
   public List<ArchiveDto> findArchives() {

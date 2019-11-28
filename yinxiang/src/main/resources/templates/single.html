@@ -62,109 +62,37 @@
                             </div>
 
                             <div class="pt-5 mt-5">
-                                <h3 class="mb-5 font-weight-bold">6 Comments</h3>
-                                <ul class="comment-list">
+                                <h3 class="mb-5 font-weight-bold" th:if="${postComments} == null">0 Comments</h3>
+                                <h3 class="mb-5 font-weight-bold" th:text="|${postComments.size()} Comments|" th:unless="${postComments} == null"></h3>
+                                <ul class="comment-list" th:each="item : ${postComments}">
                                     <li class="comment">
                                         <div class="vcard bio">
                                             <img alt="Image placeholder" src="/images/person_1.jpg">
                                         </div>
                                         <div class="comment-body">
-                                            <h3>John Doe</h3>
-                                            <div class="meta">October 03, 2018 at 2:21pm</div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
-                                                laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
-                                                saepe enim sapiente iste iure! Quam voluptas earum impedit
-                                                necessitatibus, nihil?</p>
+                                            <h3 th:text="${item.username}">John Doe</h3>
+                                            <div class="meta" th:text="${item.commentTime}">October 03, 2018 at 2:21pm
+                                            </div>
+                                            <p th:text="${item.content}"></p>
                                             <p><a class="reply" href="#">Reply</a></p>
                                         </div>
-                                    </li>
-
-                                    <li class="comment">
-                                        <div class="vcard bio">
-                                            <img alt="Image placeholder" src="/images/person_1.jpg">
-                                        </div>
-                                        <div class="comment-body">
-                                            <h3>John Doe</h3>
-                                            <div class="meta">October 03, 2018 at 2:21pm</div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
-                                                laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
-                                                saepe enim sapiente iste iure! Quam voluptas earum impedit
-                                                necessitatibus, nihil?</p>
-                                            <p><a class="reply" href="#">Reply</a></p>
-                                        </div>
-
-                                        <ul class="children">
+                                        <ul class="children" th:each="subItem : ${item.childList}">
                                             <li class="comment">
                                                 <div class="vcard bio">
                                                     <img alt="Image placeholder" src="/images/person_1.jpg">
                                                 </div>
                                                 <div class="comment-body">
-                                                    <h3>John Doe</h3>
-                                                    <div class="meta">October 03, 2018 at 2:21pm</div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                        Pariatur quidem laborum necessitatibus, ipsam impedit vitae
-                                                        autem, eum officia, fugiat saepe enim sapiente iste iure! Quam
-                                                        voluptas earum impedit necessitatibus, nihil?</p>
+                                                    <h3 th:text="${subItem.username}">John Doe</h3>
+                                                    <div class="meta" th:text="${subItem.commentTime}">October 03, 2018
+                                                        at 2:21pm
+                                                    </div>
+                                                    <p th:text="${subItem.content}"></p>
                                                     <p><a class="reply" href="#">Reply</a></p>
                                                 </div>
-
-
-                                                <ul class="children">
-                                                    <li class="comment">
-                                                        <div class="vcard bio">
-                                                            <img alt="Image placeholder"
-                                                                 src="/images/person_1.jpg">
-                                                        </div>
-                                                        <div class="comment-body">
-                                                            <h3>John Doe</h3>
-                                                            <div class="meta">October 03, 2018 at 2:21pm</div>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                Pariatur quidem laborum necessitatibus, ipsam impedit
-                                                                vitae autem, eum officia, fugiat saepe enim sapiente
-                                                                iste iure! Quam voluptas earum impedit necessitatibus,
-                                                                nihil?</p>
-                                                            <p><a class="reply" href="#">Reply</a></p>
-                                                        </div>
-
-                                                        <ul class="children">
-                                                            <li class="comment">
-                                                                <div class="vcard bio">
-                                                                    <img alt="Image placeholder"
-                                                                         src="/images/person_1.jpg">
-                                                                </div>
-                                                                <div class="comment-body">
-                                                                    <h3>John Doe</h3>
-                                                                    <div class="meta">October 03, 2018 at 2:21pm</div>
-                                                                    <p>Lorem ipsum dolor sit amet, consectetur
-                                                                        adipisicing elit. Pariatur quidem laborum
-                                                                        necessitatibus, ipsam impedit vitae autem, eum
-                                                                        officia, fugiat saepe enim sapiente iste iure!
-                                                                        Quam voluptas earum impedit necessitatibus,
-                                                                        nihil?</p>
-                                                                    <p><a class="reply" href="#">Reply</a></p>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
                                             </li>
                                         </ul>
                                     </li>
 
-                                    <li class="comment">
-                                        <div class="vcard bio">
-                                            <img alt="Image placeholder" src="/images/person_1.jpg">
-                                        </div>
-                                        <div class="comment-body">
-                                            <h3>John Doe</h3>
-                                            <div class="meta">October 03, 2018 at 2:21pm</div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
-                                                laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat
-                                                saepe enim sapiente iste iure! Quam voluptas earum impedit
-                                                necessitatibus, nihil?</p>
-                                            <p><a class="reply" href="#">Reply</a></p>
-                                        </div>
-                                    </li>
                                 </ul>
                                 <!-- END comment-list -->
 

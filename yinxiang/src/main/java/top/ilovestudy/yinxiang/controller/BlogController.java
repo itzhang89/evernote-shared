@@ -9,6 +9,7 @@ import top.ilovestudy.yinxiang.model.ArchiveDto;
 import top.ilovestudy.yinxiang.model.ArticleDto;
 import top.ilovestudy.yinxiang.model.CategoryDto;
 import top.ilovestudy.yinxiang.model.LabelDto;
+import top.ilovestudy.yinxiang.model.PostCommentDto;
 import top.ilovestudy.yinxiang.services.ArticleService;
 
 import java.util.List;
@@ -66,11 +67,13 @@ public class BlogController {
     List<LabelDto> cloudLabelDtoList = articleService.findCloudLabelList();
     List<LabelDto> cloudLabelListByArticleId = articleService.findCloudLabelListByArticleId(id);
     List<ArchiveDto> archives = articleService.findArchives();
+    List<PostCommentDto> postComments = articleService.findPostCommentByArticleId(id);
     modelMap.addAttribute("article", articleDtoById);
     modelMap.addAttribute("categories", categories);
     modelMap.addAttribute("articleLabels", cloudLabelListByArticleId);
     modelMap.addAttribute("cloudTags", cloudLabelDtoList);
     modelMap.addAttribute("archives", archives);
+    modelMap.addAttribute("postComments", postComments);
     return "single";
   }
 
