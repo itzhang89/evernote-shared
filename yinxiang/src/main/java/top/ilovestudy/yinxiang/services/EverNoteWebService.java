@@ -1,6 +1,7 @@
 package top.ilovestudy.yinxiang.services;
 
 import com.evernote.clients.NoteStoreClient;
+import com.evernote.clients.UserStoreClient;
 import com.evernote.edam.error.EDAMNotFoundException;
 import com.evernote.edam.error.EDAMSystemException;
 import com.evernote.edam.error.EDAMUserException;
@@ -27,11 +28,14 @@ public class EverNoteWebService {
 
   private NoteStoreClient noteStore;
 
+  private UserStoreClient userStoreClient;
+
   private EverNoteProperties everNoteProperties;
 
-  public EverNoteWebService(NoteStoreClient noteStore, EverNoteProperties everNoteProperties) {
+  public EverNoteWebService(NoteStoreClient noteStore, EverNoteProperties everNoteProperties, UserStoreClient userStoreClient) {
     this.noteStore = noteStore;
     this.everNoteProperties = everNoteProperties;
+    this.userStoreClient = userStoreClient;
   }
 
   Notebook getNoteBookById(String guid) throws TException, EDAMUserException, EDAMSystemException, EDAMNotFoundException {

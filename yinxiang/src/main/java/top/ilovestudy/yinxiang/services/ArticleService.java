@@ -7,11 +7,9 @@ import top.ilovestudy.yinxiang.model.CategoryDto;
 import top.ilovestudy.yinxiang.model.LabelDto;
 import top.ilovestudy.yinxiang.model.PostCommentDto;
 import top.ilovestudy.yinxiang.model.entites.Article;
-import top.ilovestudy.yinxiang.model.entites.Category;
 import top.ilovestudy.yinxiang.model.entites.Label;
 import top.ilovestudy.yinxiang.model.entites.PostComment;
 import top.ilovestudy.yinxiang.model.mapper.ArticleMapper;
-import top.ilovestudy.yinxiang.model.mapper.CategoryMapper;
 import top.ilovestudy.yinxiang.model.mapper.LabelMapper;
 import top.ilovestudy.yinxiang.model.mapper.PostCommentMapper;
 import top.ilovestudy.yinxiang.repository.ArticleRepository;
@@ -82,11 +80,6 @@ public class ArticleService {
     lists.add(articleDto3);
 
     return lists;
-  }
-
-  public CategoryDto findCategoryDtoById(String id) {
-    Category category = categoryRepository.findById(id).orElse(null);
-    return CategoryMapper.INSTANCE.categoryToCategoryDto(category);
   }
 
   public List<CategoryDto> findCategoryDtoList() {

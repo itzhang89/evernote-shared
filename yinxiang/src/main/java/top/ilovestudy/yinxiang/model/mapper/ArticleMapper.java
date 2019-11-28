@@ -1,15 +1,12 @@
 package top.ilovestudy.yinxiang.model.mapper;
 
 import com.evernote.edam.type.Note;
-import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 import top.ilovestudy.yinxiang.model.ArticleDto;
 import top.ilovestudy.yinxiang.model.entites.Article;
-import top.ilovestudy.yinxiang.model.entites.Label;
 import top.ilovestudy.yinxiang.model.mapper.annotion.StringToDateTime;
 
 import java.text.SimpleDateFormat;
@@ -18,7 +15,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.List;
 
 @Mapper(uses = LabelMapper.class)
 public interface ArticleMapper {
@@ -33,23 +29,20 @@ public interface ArticleMapper {
   @Mapping(source = "category.name", target = "category")
   ArticleDto articleToArticleDto(Article article);
 
-  @Mapping(source = "guid", target = "id")
-  @Mapping(source = "created", target = "created", qualifiedByName = {"convertEpochToZoneDateTime"})
-  @Mapping(source = "updated", target = "updated", qualifiedByName = {"convertEpochToZoneDateTime"})
-  @Mapping(source = "deleted", target = "deleted", qualifiedByName = {"convertEpochToZoneDateTime"})
-  @Mapping(source = "attributes.author", target = "author")
-  @Mapping(source = "attributes.sourceURL", target = "sourceUrl")
-  @Mapping(source = "notebookGuid", target = "category.id")
-  @Mapping(source = "tagGuids", target = "labelGuidList")
+  @Mapping(target = "briefIntro", ignore = true)
+  @Mapping(target = "original", ignore = true)
+  @Mapping(target = "category", ignore = true)
+  @Mapping(target = "postComments", ignore = true)
+  @Mapping(target = "shared", ignore = true)
+  @Mapping(target = "id", source = "guid")
+  @Mapping(target = "created", source = "created", qualifiedByName = {"convertEpochToZoneDateTime"})
+  @Mapping(target = "updated", source = "updated", qualifiedByName = {"convertEpochToZoneDateTime"})
+  @Mapping(target = "deleted", source = "deleted", qualifiedByName = {"convertEpochToZoneDateTime"})
+  @Mapping(target = "author", source = "attributes.author")
+  @Mapping(target = "sourceUrl", source = "attributes.sourceURL")
+  @Mapping(target = "category.id", source = "notebookGuid")
+  @Mapping(target = "labelGuidList", source = "tagGuids")
   Article noteToArticle(Note note);
-
-  @AfterMapping
-  default void setUpTagNameForArticle(List<String> tagNames, @MappingTarget Article article) {
-    List<Label> labelGuidList = article.getLabelGuidList();
-    for (int i = 0; i < tagNames.size(); i++) {
-      labelGuidList.get(i).setName(tagNames.get(i));
-    }
-  }
 
   @Named("convertEpochToZoneDateTime")
   default ZonedDateTime convertEpochToZoneDateTime(long epoch) {

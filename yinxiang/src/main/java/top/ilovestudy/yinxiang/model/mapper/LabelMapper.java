@@ -1,6 +1,5 @@
 package top.ilovestudy.yinxiang.model.mapper;
 
-import com.evernote.edam.type.Tag;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -14,18 +13,14 @@ public interface LabelMapper {
 
   LabelMapper INSTANCE = Mappers.getMapper(LabelMapper.class);
 
-  @Mapping(source = "tagGuid", target = "id")
-  @Mapping(source = "tagGuid", target = "url")
+  @Mapping(target = "id", source = "tagGuid")
+  @Mapping(target = "url", source = "tagGuid")
   LabelDto labelToLabelDto(Label label);
 
-  @Mapping(source = "guid", target = "tagGuid")
-  Label convertGuidAndNameToLabel(String guid, String name);
-
-  @Mapping(source = "guid", target = "tagGuid")
+  @Mapping(target = "id", ignore = true)
+  @Mapping(target = "name", ignore = true)
+  @Mapping(target = "tagGuid", source = "guid")
   Label convertTagGuidToLabel(String guid);
-
-  @Mapping(source = "guid", target = "tagGuid")
-  Label tagToLabel(Tag tag);
 
   List<Label> convertTagGuidsToLabelList(List<String> tagGuids);
 }
