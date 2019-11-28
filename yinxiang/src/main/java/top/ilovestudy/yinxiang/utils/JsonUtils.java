@@ -7,6 +7,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 import top.ilovestudy.yinxiang.model.entites.Article;
+import top.ilovestudy.yinxiang.model.entites.PostComment;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,6 +16,18 @@ import java.util.List;
 public class JsonUtils {
 
   private volatile static ObjectMapper instance;
+
+  public static List<PostComment> readPostCommentListFromJsonFile(String path) {
+    try {
+      return getInstance().readValue(
+          new ClassPathResource(path).getFile(),
+          new TypeReference<List<PostComment>>() {
+          });
+    } catch (IOException e) {
+      log.error(e.getMessage());
+    }
+    return null;
+  }
 
   public static List<Note> readNoteListFromJsonFile(String path) {
     try {
