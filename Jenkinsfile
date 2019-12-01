@@ -4,6 +4,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Prepare') {
+            git url: 'git@gitee.com:ilovestudy1314/ShareEvernote.git', branch: 'master'
+        }
+    }
+
+    stages {
         stage('Unit Test') {
             steps {
                 sh './gradlew :yinxiang:cleanTest :yinxiang:test --tests \'*\''
