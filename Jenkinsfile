@@ -4,12 +4,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Prepare') {
-            git url: 'git@gitee.com:ilovestudy1314/ShareEvernote.git', branch: 'master'
-        }
-    }
 
-    stages {
+//        stage('Prepare') {
+//            git url: 'git@gitee.com:ilovestudy1314/ShareEvernote.git', branch: 'master'
+//        }
+
         stage('Unit Test') {
             steps {
                 sh './gradlew :yinxiang:cleanTest :yinxiang:test --tests \'*\''
@@ -17,7 +16,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh './gradlew :yinxiang:bootRuns'
+                echo "start to deploy"
+//                sh './gradlew :yinxiang:bootRuns'
             }
         }
     }
