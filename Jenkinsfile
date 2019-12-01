@@ -1,9 +1,7 @@
 def projectName = 'ShareEvernote'
 
 pipeline {
-    agent {
-        label 'gradle'
-    }
+    agent any
 
     stages {
         stage('Unit Test') {
