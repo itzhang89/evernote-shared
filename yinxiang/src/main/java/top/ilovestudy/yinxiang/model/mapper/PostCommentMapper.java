@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static top.ilovestudy.yinxiang.utils.DateUtils.COMMEENT_DATE_TIME_FORMAT;
+import static top.ilovestudy.yinxiang.utils.DateUtils.COMMENT_DATE_TIME_FORMAT;
 
 @Mapper
 public interface PostCommentMapper {
@@ -18,7 +18,7 @@ public interface PostCommentMapper {
   PostCommentMapper INSTANCE = Mappers.getMapper(PostCommentMapper.class);
 
   @Mapping(target = "childList", ignore = true)
-  @Mapping(target = "commentTime", source = "commentTime", dateFormat = COMMEENT_DATE_TIME_FORMAT)
+  @Mapping(target = "commentTime", source = "commentTime", dateFormat = COMMENT_DATE_TIME_FORMAT)
   @Mapping(target = "replyTo", source = "parentPostComment.username")
   PostCommentDto postCommentToPostCommentDto(PostComment postComment);
 
