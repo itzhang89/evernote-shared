@@ -24,3 +24,9 @@ hs_err_pid*
 
 # remove all node_modules library
 node_modules
+
+# gradle directory
+.gradle
+
+# idea configuration
+.idea
