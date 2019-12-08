@@ -11,7 +11,10 @@ pipeline {
 
         stage('Unit Test') {
             steps {
-                sh './gradlew :yinxiang:cleanTest :yinxiang:test --tests \'*\''
+                sh './gradlew :yinxiang:cleanTest :yinxiang:test --tests \'*\' --args=\'' +
+                        '--yinxiang.dev-token=${devToken} ' +
+                        '--yinxiang.note-store-url=${noteStoreUrl} ' +
+                        '--spring.datasource.password=${dbPassword}\''
             }
         }
         stage('Build Jar') {
@@ -26,15 +29,13 @@ pipeline {
                 sh './gradlew :yinxiang:bootRun --args=\'' +
                         '--yinxiang.dev-token=${devToken} ' +
                         '--yinxiang.note-store-url=${noteStoreUrl} ' +
-                        '--spring.datasource.url=${dbUrl} ' +
-                        '--spring.datasource.username=${dbUserName} ' +
                         '--spring.datasource.password=${dbPassword}\''
             }
         }
     }
     post {
         always {
-            junit 'yinxiang/build/reports/**/*.xml'
+            junit 'yinxiang/build/reports/**/*.html'
         }
     }
 }
