@@ -24,6 +24,10 @@ dependencies {
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
+bootJar {
+    launchScript()
+}
+
 compileJava.dependsOn(processResources)
 
 tasks.test {

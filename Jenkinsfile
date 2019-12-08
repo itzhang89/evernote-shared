@@ -23,10 +23,7 @@ pipeline {
         stage('Deloy In Local') {
             steps {
                 echo "start to run springboot"
-                sh './gradlew :yinxiang:bootRun --args=\'' +
-                        '--yinxiang.dev-token=${devToken} ' +
-                        '--yinxiang.note-store-url=${noteStoreUrl} ' +
-                        '--spring.datasource.password=${dbPassword}\''
+                sh './script/restart.sh'
             }
         }
     }
