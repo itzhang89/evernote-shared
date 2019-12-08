@@ -1,0 +1,35 @@
+yinxiang:
+  devToken: yourDevTokenInEverNote
+  noteStoreUrl: yourNoteStoreUrlInEverNote
+  filterNoteBooks:
+    - "the name of notebook that you want to filtered"
+    - "the name of notebook that you want to filtered"
+  filterNotes:
+    - "the name of note that you want to filtered"
+    - "the name of note that you want to filtered"
+  sync:
+    schedule: 0 0 10,14,18,22 * * ?
+spring:
+  thymeleaf:
+    cache: false
+
+  devtools:
+    restart:
+      additional-paths:
+        - "yinxiang/src/main/java"
+        - "**/resources/templates"
+  datasource:
+    url: jdbc:postgresql://localhost:xxx/xxx?useUnicode=true&characterEncoding=utf-8
+    username: 数据库用户名
+    password: 数据库密码
+    driverClassName: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        create: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl:
+          auto: create
+        temp:
+          use_jdbc_metadata_defaults: false

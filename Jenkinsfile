@@ -14,10 +14,21 @@ pipeline {
                 sh './gradlew :yinxiang:cleanTest :yinxiang:test --tests \'*\''
             }
         }
-        stage('Deploy') {
+        stage('Build Jar') {
             steps {
-                echo "start to deploy"
-//                sh './gradlew :yinxiang:bootRuns'
+                echo "start to build jar"
+//                sh './gradlew :yinxiang:clean :yinxiang:bootJar'
+            }
+        }
+        stage('Deloy In Local') {
+            steps {
+                echo "start to run springboot"
+                sh './gradlew :yinxiang:bootRun --args=\'' +
+                        '--yinxiang.dev-token=${devToken} ' +
+                        '--yinxiang.note-store-url=${noteStoreUrl} ' +
+                        '--spring.datasource.url=${dbUrl} ' +
+                        '--spring.datasource.username=${dbUserName} ' +
+                        '--spring.datasource.password=${dbPassword}\''
             }
         }
     }

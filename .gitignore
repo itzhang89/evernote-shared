@@ -30,3 +30,6 @@ node_modules
 
 # idea configuration
 .idea
+
+# remove the output of build in module of yinxiang
+yinxiang/build
