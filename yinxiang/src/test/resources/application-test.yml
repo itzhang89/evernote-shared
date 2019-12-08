@@ -19,8 +19,8 @@ spring:
         - "yinxiang/src/main/java"
         - "**/resources/templates"
   datasource:
-    url: jdbc:postgresql://localhost:xxx/xxx?useUnicode=true&characterEncoding=utf-8
-    username: 数据库用户名
+    url: jdbc:postgresql://localhost:5432/test?useUnicode=true&characterEncoding=utf-8
+    username: postgres
     password: 数据库密码
     driverClassName: org.postgresql.Driver
   jpa:
