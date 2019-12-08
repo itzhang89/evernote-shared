@@ -13,8 +13,7 @@ pipeline {
             steps {
                 sh './gradlew :yinxiang:cleanTest :yinxiang:test --tests \'*\' --args=\'' +
                         '--yinxiang.dev-token=${devToken} ' +
-                        '--yinxiang.note-store-url=${noteStoreUrl} ' +
-                        '--spring.datasource.password=${dbPassword}\''
+                        '--yinxiang.note-store-url=${noteStoreUrl}\''
             }
         }
         stage('Build Jar') {

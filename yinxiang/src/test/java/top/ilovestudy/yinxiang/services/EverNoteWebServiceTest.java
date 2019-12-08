@@ -7,12 +7,9 @@ import com.evernote.edam.type.Notebook;
 import com.evernote.thrift.TException;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.SpyBean;
-import org.springframework.test.context.junit4.SpringRunner;
+import top.ilovestudy.yinxiang.BaseSpringTest;
 import top.ilovestudy.yinxiang.config.EverNoteProperties;
 
 import java.util.ArrayList;
@@ -20,9 +17,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.when;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class EverNoteWebServiceTest {
+class EverNoteWebServiceTest extends BaseSpringTest {
 
   @SpyBean
   NoteStoreClient noteStoreClient;
