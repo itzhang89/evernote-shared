@@ -11,15 +11,13 @@ pipeline {
 
         stage('Unit Test') {
             steps {
-                sh './gradlew :yinxiang:cleanTest :yinxiang:test --tests \'*\' --args=\'' +
-                        '--yinxiang.dev-token=${devToken} ' +
-                        '--yinxiang.note-store-url=${noteStoreUrl}\''
+                sh './gradlew :yinxiang:cleanTest :yinxiang:test --tests \'*\' -Dyinxiang.dev-token=${devToken} -Dyinxiang.note-store-url=${noteStoreUrl}'
             }
         }
         stage('Build Jar') {
             steps {
                 echo "start to build jar"
-//                sh './gradlew :yinxiang:clean :yinxiang:bootJar'
+                sh './gradlew :yinxiang:clean :yinxiang:bootJar'
             }
         }
         stage('Deloy In Local') {
