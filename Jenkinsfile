@@ -11,13 +11,13 @@ pipeline {
 
         stage('Unit Test') {
             steps {
-                sh './gradlew :yinxiang:cleanTest :yinxiang:test'
+                sh './gradlew :yinxiang:clean :yinxiang:test'
             }
         }
         stage('Build Jar') {
             steps {
                 echo "start to build jar"
-                sh './gradlew :yinxiang:clean :yinxiang:bootJar'
+                sh './gradlew :yinxiang:bootJar'
             }
         }
         stage('Deloy In Local') {
