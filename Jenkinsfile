@@ -23,7 +23,7 @@ pipeline {
         stage('Deloy In Local') {
             steps {
                 echo "start to run springboot"
-                sh './script/startup.sh'
+                sh './script/restart.sh'
             }
         }
     }
