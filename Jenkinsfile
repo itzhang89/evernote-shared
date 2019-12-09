@@ -11,7 +11,7 @@ pipeline {
 
         stage('Unit Test') {
             steps {
-                sh './gradlew :yinxiang:cleanTest :yinxiang:test --tests \'*\' -Dyinxiang.dev-token=${devToken} -Dyinxiang.note-store-url=${noteStoreUrl}'
+                sh './gradlew :yinxiang:cleanTest :yinxiang:test'
             }
         }
         stage('Build Jar') {
@@ -23,7 +23,7 @@ pipeline {
         stage('Deloy In Local') {
             steps {
                 echo "start to run springboot"
-                sh './script/restart.sh'
+                sh './script/startup.sh'
             }
         }
     }

@@ -24,7 +24,7 @@ public class EverNoteConfig {
   }
 
   @Bean
-  public NoteStoreClient NoteStoreClient(ClientFactory clientFactory, UserStoreClient userStoreClient) throws TException, EDAMSystemException, EDAMUserException {
+  public NoteStoreClient noteStoreClient(ClientFactory clientFactory, UserStoreClient userStoreClient) throws TException, EDAMSystemException, EDAMUserException {
     boolean versionOk = userStoreClient.checkVersion("Evernote EDAMDemo (Java)",
         EDAM_VERSION_MAJOR,
         EDAM_VERSION_MINOR);

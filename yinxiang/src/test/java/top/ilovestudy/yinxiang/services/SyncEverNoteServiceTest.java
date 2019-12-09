@@ -4,11 +4,13 @@ import com.evernote.edam.error.EDAMNotFoundException;
 import com.evernote.edam.error.EDAMSystemException;
 import com.evernote.edam.error.EDAMUserException;
 import com.evernote.edam.type.Note;
+import com.evernote.edam.type.Notebook;
+import com.evernote.edam.type.Tag;
 import com.evernote.thrift.TException;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.SpyBean;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.jdbc.Sql;
 import top.ilovestudy.yinxiang.IsolationTest;
 import top.ilovestudy.yinxiang.model.entites.Article;
@@ -23,6 +25,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.mockito.ArgumentMatchers.anyString;
 import static top.ilovestudy.yinxiang.utils.JsonUtils.readNoteListFromJsonFile;
 
 
@@ -40,7 +43,7 @@ class SyncEverNoteServiceTest extends IsolationTest {
   @Autowired
   SyncEverNoteService syncEverNoteService;
 
-  @SpyBean
+  @MockBean
   EverNoteWebService everNoteWebService;
 
   @Test
@@ -66,6 +69,9 @@ class SyncEverNoteServiceTest extends IsolationTest {
     List<Label> labelsBeforeSync = labelRepository.findAll();
     assertEquals(1, labelsBeforeSync.size());
     assertNull(labelsBeforeSync.get(0).getName());
+    Tag tag = new Tag();
+    tag.setName("tag_name_1");
+    Mockito.when(everNoteWebService.getTagById(anyString())).thenReturn(tag);
 
     syncEverNoteService.syncAllLabelsFromEverNoteAndSaveInDatabase();
 
@@ -80,6 +86,9 @@ class SyncEverNoteServiceTest extends IsolationTest {
     List<Category> categoriesBeforeSync = categoryRepository.findAll();
     assertEquals(1, categoriesBeforeSync.size());
     assertNull(categoriesBeforeSync.get(0).getName());
+    Notebook notebook = new Notebook();
+    notebook.setName("category_name_1");
+    Mockito.when(everNoteWebService.getNoteBookById(anyString())).thenReturn(notebook);
 
     syncEverNoteService.syncAllCategoriesFromEverNoteAndSaveInDatabase();
 

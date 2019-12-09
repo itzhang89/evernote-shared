@@ -1,6 +1,5 @@
 package top.ilovestudy.yinxiang.services;
 
-import com.evernote.clients.NoteStoreClient;
 import com.evernote.edam.error.EDAMSystemException;
 import com.evernote.edam.error.EDAMUserException;
 import com.evernote.edam.type.Notebook;
@@ -8,9 +7,7 @@ import com.evernote.thrift.TException;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 import top.ilovestudy.yinxiang.BaseSpringTest;
-import top.ilovestudy.yinxiang.config.EverNoteProperties;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +15,6 @@ import java.util.List;
 import static org.mockito.Mockito.when;
 
 class EverNoteWebServiceTest extends BaseSpringTest {
-
-  @SpyBean
-  NoteStoreClient noteStoreClient;
-
-  @SpyBean
-  EverNoteProperties everNoteProperties;
 
   @Autowired
   EverNoteWebService everNoteWebService;
