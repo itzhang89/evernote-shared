@@ -3,6 +3,12 @@ def projectName = 'ShareEvernote'
 pipeline {
     agent any
 
+    parameters {
+        password(name: 'devToken', defaultValue: '', description: 'devToken from evernote')
+        string(name: 'noteStoreUrl', defaultValue: '', description: 'noteStoreUrl from evernote')
+        password(name: 'dbPassword', defaultValue: '', description: 'database password for postgres')
+    }
+
     stages {
 
 //        stage('Prepare') {
@@ -23,7 +29,7 @@ pipeline {
         stage('Deloy In Local') {
             steps {
                 echo "start to run springboot"
-                sh './script/restart.sh'
+                sh './script/service.sh start ${params.devToken} ${params.noteStoreUrl} ${params.dbPassword}'
             }
         }
     }
