@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
+CURRENT_FOLDER=$(pwd)
 # 进入当前脚本目录
 SHELL_FOLDER=$(cd "$(dirname "$0")";pwd)
 cd ${SHELL_FOLDER}
@@ -70,3 +71,6 @@ restart)
     echo default
     ;;
 esac
+
+# 返回之前的工作目录
+cd ${CURRENT_FOLDER}
