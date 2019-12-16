@@ -10,13 +10,9 @@ action=$1
 [[ -z ${action} ]] && echo "you must choice one: [start/stop/restart]" && exit 1
 
 if [[ ${action} != 'stop' ]]; then
-    devToken=$2
-    noteStoreUrl=$3
-    dbPassword=$4
-
-    [[ -z ${devToken} ]] && echo "devToken parameter not exist" && exit 1
-    [[ -z ${noteStoreUrl} ]] && echo "noteStoreUrl parameter not exist" && exit 1
-    [[ -z ${dbPassword} ]] && echo "dbPassword parameter not exist" && exit 1
+    [[ -z ${devToken} ]] && echo "devToken parameter not exist in bash env" && exit 1
+    [[ -z ${noteStoreUrl} ]] && echo "noteStoreUrl parameter not exist in bash env" && exit 1
+    [[ -z ${dbPassword} ]] && echo "dbPassword parameter not exist in bash env" && exit 1
 fi
 
 app_name='yinxiang'
