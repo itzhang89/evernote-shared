@@ -29,7 +29,7 @@ pipeline {
     }
     post {
         always {
-            junit 'yinxiang/build/reports/**/*.html'
+            junit 'yinxiang/build/reports/tests/**/*.html'
         }
     }
 }
