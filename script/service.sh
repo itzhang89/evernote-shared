@@ -40,10 +40,7 @@ function start_service() {
 
 function stop_service() {
     SIGNAL=${SIGNAL:-TERM}
-    if [[ -z "$pid" ]]; then
-        echo "No ${app_name} server need to stop"
-        exit 1
-    else
+    if [[ ! -z "$pid" ]]; then
         kill -s ${SIGNAL} ${pid}
     fi
 }
