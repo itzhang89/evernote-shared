@@ -1,4 +1,4 @@
-package example.rabbitmq.gitchat;
+package example.rabbitmq.gitchat.spring;
 
 
 import org.springframework.amqp.core.Queue;

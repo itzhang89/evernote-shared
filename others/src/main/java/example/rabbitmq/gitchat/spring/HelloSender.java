@@ -1,4 +1,4 @@
-package example.rabbitmq.gitchat;
+package example.rabbitmq.gitchat.spring;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

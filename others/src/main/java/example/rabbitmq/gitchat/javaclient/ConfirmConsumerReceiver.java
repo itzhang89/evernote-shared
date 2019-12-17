@@ -1,4 +1,4 @@
-package example.rabbitmq.gitchat01;
+package example.rabbitmq.gitchat.javaclient;
 
 import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
@@ -9,8 +9,6 @@ import com.rabbitmq.client.Envelope;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-import static example.rabbitmq.gitchat01.MqManager.TASK_QUEUE_NAME;
-
 public class ConfirmConsumerReceiver {
 
   public static void main(String[] args) throws IOException, TimeoutException {
@@ -18,7 +16,7 @@ public class ConfirmConsumerReceiver {
     Channel channel = conn.createChannel();
 
     // 消费消息
-    channel.basicConsume(TASK_QUEUE_NAME, false, "myConsumer Tag", new DefaultConsumer(channel) {
+    channel.basicConsume(MqManager.TASK_QUEUE_NAME, false, "myConsumer Tag", new DefaultConsumer(channel) {
       @Override
       public void handleDelivery(String consumerTag, Envelope envelope, BasicProperties properties, byte[] body) throws IOException {
         String routingKey = envelope.getRoutingKey();

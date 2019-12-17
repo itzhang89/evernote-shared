@@ -1,4 +1,4 @@
-package example.rabbitmq.gitchat01;
+package example.rabbitmq.gitchat.javaclient;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
@@ -7,7 +7,7 @@ import com.rabbitmq.client.MessageProperties;
 
 import java.util.concurrent.TimeoutException;
 
-import static example.rabbitmq.gitchat01.MqManager.EXCHANGE_NAME;
+import static example.rabbitmq.gitchat.javaclient.MqManager.EXCHANGE_NAME;
 
 public class BasicSender {
 

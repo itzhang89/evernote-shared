@@ -1,4 +1,4 @@
-package example.rabbitmq.gitchat01;
+package example.rabbitmq.gitchat.javaclient;
 
 
 import com.rabbitmq.client.Channel;
@@ -8,9 +8,6 @@ import org.springframework.amqp.utils.SerializationUtils;
 
 import java.io.IOException;
 import java.io.Serializable;
-
-import static example.rabbitmq.gitchat01.MqManager.EXCHANGE_NAME;
-import static example.rabbitmq.gitchat01.MqManager.TASK_QUEUE_NAME;
 
 public class ExchangeConfirmSender {
 
@@ -28,7 +25,7 @@ public class ExchangeConfirmSender {
   public static void txSend(Serializable mes) throws Exception {
     Connection conn = MqManager.createConnection();
     Channel channel = conn.createChannel();
-    channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
+    channel.queueDeclare(MqManager.TASK_QUEUE_NAME, true, false, false, null);
 
     // 开启confirm机制
     channel.confirmSelect();
@@ -48,7 +45,7 @@ public class ExchangeConfirmSender {
     });
     for (int i = 0; i < 10; i++) {
       System.out.println("---------消息发送-----");
-      channel.basicPublish(EXCHANGE_NAME, TASK_QUEUE_NAME, null, SerializationUtils.serialize(mes.toString() + i));
+      channel.basicPublish(MqManager.EXCHANGE_NAME, MqManager.TASK_QUEUE_NAME, null, SerializationUtils.serialize(mes.toString() + i));
     }
     //同步实现发送消息的确认
     channel.waitForConfirms();

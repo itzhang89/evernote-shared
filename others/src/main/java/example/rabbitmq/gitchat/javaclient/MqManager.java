@@ -1,4 +1,4 @@
-package example.rabbitmq.gitchat01;
+package example.rabbitmq.gitchat.javaclient;
 
 import com.rabbitmq.client.ConfirmListener;
 import com.rabbitmq.client.Connection;
