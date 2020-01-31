@@ -1,22 +1,27 @@
 # ShareEverNote
 
 #### Description
-{**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}
+
+本项目主要是想将印象笔记中所有**Share**笔记的笔记内容，能够以博客网站的形式分享出来。
 
 #### Software Architecture
 Software architecture description
 
 #### Installation
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  确保 Docker > 18.09+
+2.  确保 Java > 1.8
+3.  确保**你有印象笔记的开发者Token**。官网申请链接[Developer Tokens](https://app.yinxiang.com/api/DeveloperToken.action)
 
 #### Instructions
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  将印象笔记中申请的 devToken 和 noteStoreUrl 设置到环境变量上, 如下。
+    ```bash
+    export devToken=S=s20:U=aaaaaaaa:E=bbbbbbbb:C=:P=1cd:A=en-devtoken:V=2:H=c5xxxxxxxxxxxx038c7684c
+    export noteStoreUrl=https://app.yinxiang.com/shard/s20/notestore
+    ```
+2.  利用docker-compose 来启动 postgres 数据库。 `docker-compose -f yinxiang/src/main/resources/docker-compose.yml up`
+3.  启动ShareEverNote应用。 ` ./gradlew clean bootRun `
 
 #### Contribution
 
