@@ -15,13 +15,22 @@ Software architecture description
 
 #### Instructions
 
-1.  将印象笔记中申请的 devToken 和 noteStoreUrl 设置到环境变量上, 如下。
+1.  将印象笔记中申请的 `devToken` 和 `noteStoreUrl` 设置到环境变量上, 如下。
     ```bash
     export devToken=S=s20:U=aaaaaaaa:E=bbbbbbbb:C=:P=1cd:A=en-devtoken:V=2:H=c5xxxxxxxxxxxx038c7684c
     export noteStoreUrl=https://app.yinxiang.com/shard/s20/notestore
     ```
-2.  利用docker-compose 来启动 postgres 数据库。 `docker-compose -f yinxiang/src/main/resources/docker-compose.yml up`
-3.  启动ShareEverNote应用。 ` ./gradlew clean bootRun `
+    
+2. 利用docker-compose 来启动 postgres 数据库。 `docker-compose up db -d`
+
+3. 如果第一次启动，需要创建“yinxiang” 数据库，`docker exec -it shareevernote_db_1 psql -U postgres -c 'create database yinxiang'`
+
+4. 在本地启动ShareEverNote应用。 ` ./gradlew clean bootRun `
+
+**利用Docker-compose来部署**
+
+1. 在 `.env` 文件中填写上 `devToken` 和 `noteStoreUrl` 环境变量值
+2. 运行 `docker-compose up -d` 就可以启动web和db服务。（同样的第一次启动需要先创建“yinxiang”数据库）
 
 #### Contribution
 
