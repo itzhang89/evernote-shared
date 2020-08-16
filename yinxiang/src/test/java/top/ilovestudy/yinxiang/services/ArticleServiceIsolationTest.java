@@ -22,6 +22,6 @@ class ArticleServiceIsolationTest extends IsolationTest {
 
     assertEquals(1, archives.size());
     assertEquals(1, archives.get(0).getCount());
-    assertEquals("2019-7", archives.get(0).getDate());
+    assertEquals("2019 ago", archives.get(0).getDate());
   }
 }
