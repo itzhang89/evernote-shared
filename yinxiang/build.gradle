@@ -34,13 +34,13 @@ tasks.test {
     useJUnitPlatform()
 }
 
-// setup the entrypoint for heroku. If no known web frameworks are detected, it will run ./gradlew stage.
-task stage(dependsOn: ['build', 'clean'])
-build.mustRunAfter clean
-
-gradle.taskGraph.whenReady {
-    taskGraph ->
-        if (taskGraph.hasTask(stage)) {
-            test.enabled = false
-        }
-}
+//// setup the entrypoint for heroku. If no known web frameworks are detected, it will run ./gradlew stage.
+//task stage(dependsOn: ['build', 'clean'])
+//build.mustRunAfter clean
+//
+//gradle.taskGraph.whenReady {
+//    taskGraph ->
+//        if (taskGraph.hasTask(stage)) {
+//            test.enabled = false
+//        }
+//}
