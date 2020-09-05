@@ -1,1 +1,1 @@
-web: java -jar yinxiang/build/libs/yinxiang-0.0.1-SNAPSHOT.jar
+web: ./gradlew bootRun
