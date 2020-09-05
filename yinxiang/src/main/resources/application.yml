@@ -9,6 +9,8 @@ yinxiang:
     - "the name of note that you want to filtered"
   sync:
     schedule: 0 0 10,14,18,22 * * ?
+server:
+  port: ${PORT:8080}
 spring:
   thymeleaf:
     cache: false
