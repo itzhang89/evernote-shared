@@ -1,6 +1,6 @@
 yinxiang:
-  devToken: ${devToken}
-  noteStoreUrl: ${noteStoreUrl}
+  devToken: ${DEV_TOKEN}
+  noteStoreUrl: ${NOTE_STORE_URL}
   filterNoteBooks:
     - "the name of notebook that you want to filtered"
     - "the name of notebook that you want to filtered"
@@ -19,9 +19,9 @@ spring:
         - "yinxiang/src/main/java"
         - "**/resources/templates"
   datasource:
-    url: ${dbUrl:jdbc:postgresql://localhost:5432/yinxiang?useUnicode=true&characterEncoding=utf-8}
-    username: ${dbUser:postgres}
-    password: ${dbPassword:mysecretpassword}
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/yinxiang?useUnicode=true&characterEncoding=utf-8}
+    username: ${JDBC_DATABASE_USERNAME:postgres}
+    password: ${JDBC_DATABASE_PASSWORD:mysecretpassword}
     driverClassName: org.postgresql.Driver
   jpa:
     show-sql: true
